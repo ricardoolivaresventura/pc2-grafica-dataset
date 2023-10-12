@@ -25,7 +25,7 @@ main_html = """
 
 
       numero = getRndInteger(0, 10);
-      numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      numeros = [0,1,2,3,4,5,6,7,8,9];
       random = Math.floor(Math.random() * numeros.length);
       aleatorio = numeros[random];
 
@@ -83,10 +83,16 @@ main_html = """
 <body onload="InitThis();">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" ></script>
-    <div align="left">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Uni-logo_transparente_granate.png" width="300"/>
-    </div>
     <div align="center">
+        <h1 id="title">PC2 - COMPUTACIÓN GRÁFICA</h1>
+        <p style="text-align:center, font-size:20px">Ricardo Olivares Ventura - 20192002A</p>
+        <p style="text-align:center, font-size:20px">Sergei Calle Cuadros</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <h1 id="subtitle">🚀LLenando el dataset de entrenamiento🚀</h1>
+        <p></p>
+        <p></p>
         <h1 id="mensaje">Dibujando...</h1>
         <canvas id="myCanvas" width="200" height="200" style="border:2px solid black"></canvas>
         <br/>
@@ -130,7 +136,8 @@ def upload():
 @app.route('/prepare', methods=['GET'])
 def prepare_dataset():
     images = []
-    d = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    d = [0, 1, 2, 3 ,4 ,5 ,6 ,7 ,8 ,9]
+    # d = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     # d = ["I","N","U"]
     digits = []
     for digit in d:
@@ -154,7 +161,8 @@ def download_y():
     return send_file('./y.npy')
 
 if __name__ == "__main__":
-    digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    digits = [0, 1, 2, 3 ,4 ,5 ,6 ,7 ,8 ,9]
+    # digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     # digits = ['U', 'N', 'I']
     for d in digits:
         if not os.path.exists(str(d)):
