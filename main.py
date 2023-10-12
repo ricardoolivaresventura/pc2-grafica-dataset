@@ -25,9 +25,9 @@ main_html = """
 
 
       numero = getRndInteger(0, 10);
-      letra = ["U", "N", "I"];
-      random = Math.floor(Math.random() * letra.length);
-      aleatorio = letra[random];
+      numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+      random = Math.floor(Math.random() * numeros.length);
+      aleatorio = numeros[random];
 
       document.getElementById('mensaje').innerHTML  = 'Dibujando un ' + aleatorio;
       document.getElementById('numero').value = aleatorio;
@@ -130,7 +130,8 @@ def upload():
 @app.route('/prepare', methods=['GET'])
 def prepare_dataset():
     images = []
-    d = ["I","N","U"]
+    d = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    # d = ["I","N","U"]
     digits = []
     for digit in d:
       filelist = glob.glob('{}/*.png'.format(digit))
@@ -153,7 +154,8 @@ def download_y():
     return send_file('./y.npy')
 
 if __name__ == "__main__":
-    digits = ['U', 'N', 'I']
+    digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    # digits = ['U', 'N', 'I']
     for d in digits:
         if not os.path.exists(str(d)):
             os.mkdir(str(d))
