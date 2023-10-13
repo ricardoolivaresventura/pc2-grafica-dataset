@@ -7,10 +7,13 @@ import base64
 import glob
 import numpy as np
 from PIL import Image
+import io as i
+import matplotlib.pyplot as plt
+from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
 
-# model = load_model('model.h5')
+model = load_model('model.keras')
 
 main_html = """
 <html>
@@ -235,16 +238,19 @@ def upload():
 
     return redirect("/", code=302)
 
-""" @app.route('/upload_2', methods=['POST'])
+@app.route('/upload_2', methods=['POST'])
 def upload2():
     try:
-        img_data = request.form.get('myImage').replace("data:image/png;base64,","")
-        image = np.array(Image.open(io.BytesIO(base64.b64decode(img_data))).convert('L'))
+        img_data = request.form.get('myImage2').replace("data:image/png;base64,","")
+        image = np.array(Image.open(i.BytesIO(base64.b64decode(img_data))))
+        image = image[:, :, 3]
+        image = image /255
         image = resize(image, (28, 28))
-        image = image / 255.0
-        model = getModel()
-        prediction = model.predict(np.expand_dims(image, axis=0))
-        predicted_number = np.argmax(prediction)
+        plt.imshow(-image[:,:], cmap='gray')
+        plt.show()
+        
+        prediction = model.predict(image[None,:,:])[0]
+        predicted_number = np.argmax(prediction) 
 
         # Return prediction
         return jsonify({'predicted_number': int(predicted_number)})
@@ -252,8 +258,7 @@ def upload2():
     except Exception as err:
         print("Error occurred during image analysis")
         print(err)
-        # return jsonify({'error': 'An error occurred during image analysis'})
-    return redirect("/", code=302) """
+        return jsonify({'error': 'An error occurred during image analysis'})
 
 @app.route('/prepare', methods=['GET'])
 def prepare_dataset():

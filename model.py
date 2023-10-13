@@ -38,5 +38,6 @@ def getModel():
     model.compile(optimizer=optimizer1, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
     log = model.fit(X_train, y_train, batch_size=bs, epochs=400, validation_data=(X_test, y_test))
+    #model.save('model.keras') #Remove this comment if you want to generate the model.keras 
     return model
 
