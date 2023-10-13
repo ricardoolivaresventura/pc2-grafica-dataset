@@ -5,7 +5,7 @@
 # Página web para llenar el dataset de entrenamiento:
 https://web-production-77d5.up.railway.app/
 
-# Ruta para preparar el X.npy y el y.npy:
+# Ruta para preparar el X.npy y el y.npy. El X.npy y el y.npy lo usamos para entrenar el modelo, el código del modelo también está dentro del repositorio se llama: modeloEntrenamiento.pynb
 https://web-production-77d5.up.railway.app/prepare
 
 # Ruta para descargar el X.npy:
