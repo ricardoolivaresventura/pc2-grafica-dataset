@@ -16,3 +16,5 @@ https://web-production-77d5.up.railway.app/y.npy
 
 # Página web para mostrar dibujar y predecir los números dibujados por el usuario: (Nota: A)
 https://web-production-77d5.up.railway.app/predictions
+
+# Además en el repo hemos subido un video demostrativo enseñando el funcionamiento de la aplicación, tanto la generación de dataset como la predicción de lo que el usuario dibuja
